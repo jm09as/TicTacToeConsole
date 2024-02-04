@@ -35,8 +35,7 @@ public class Play {
 		sign.setMarking(getPlayer().getName());
 		UserInput input = new UserInput(sc);
 		Message.printAskPlayer(getCurrentName());
-		Coordinate coordinate;
-		coordinate = getCoordinate(input);
+		Coordinate coordinate = getCoordinate(input);
 		sign.setColumn(coordinate.getColumn());
 		sign.setRow(coordinate.getRow());
 		getPlayer().getCordinates().add(coordinate);
