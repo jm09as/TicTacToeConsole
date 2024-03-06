@@ -2,6 +2,7 @@ package tools;
 
 import java.util.Scanner;
 
+import main.Message;
 import model.Coordinate;
 
 public class UserInput {
@@ -23,7 +24,7 @@ public class UserInput {
 		if (coordiante.equalsIgnoreCase("q")) {
 			throw new ExitGameException("Kilptél a játékból!");
 		}
-		System.out.println("Nem megfelelő kordináta! Válassz másikat! :");
+		Message.printWrongCoordinate();
 		return askCoordinate();
 	}
 

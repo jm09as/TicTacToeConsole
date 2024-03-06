@@ -13,7 +13,6 @@ public enum Coordinate {
 	C1(2, 10),
 	C2(2, 30),
 	C3(2, 50);
-	
 
 	private int row;
 	private int column;

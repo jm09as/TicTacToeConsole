@@ -33,8 +33,8 @@ public class Play {
 	public Sign askPlayerSign() throws ExitGameException {
 		Message.printAskPlayer(getCurrentName());
 		Coordinate coordinate = getCoordinate(new UserInput(sc));
-		getPlayer().getCoordinates().add(coordinate);
-		return new Sign(coordinate.getColumn(), coordinate.getRow(), getPlayer().getName());
+		getPlayer().coordinates().add(coordinate);
+		return new Sign(coordinate.getColumn(), coordinate.getRow(), getPlayer().name());
 	}
 
 	private Coordinate getCoordinate(UserInput input) throws ExitGameException {
@@ -47,8 +47,8 @@ public class Play {
 	}
 
 	private boolean checkUsedCoordinate(Coordinate coordinate) {
-		List<Coordinate> allCoordiante = new ArrayList<>(redPlayer.getCoordinates());
-		allCoordiante.addAll(bluePlayer.getCoordinates());
+		List<Coordinate> allCoordiante = new ArrayList<>(redPlayer.coordinates());
+		allCoordiante.addAll(bluePlayer.coordinates());
 		return allCoordiante.contains(coordinate);
 	}
 
@@ -72,7 +72,7 @@ public class Play {
 		int result = 3;
 		for (var coordinateWinList : Coordinate.getWinList()) {
 			int i = 0;
-			for (var playerCordiante : getPlayer().getCoordinates()) {
+			for (var playerCordiante : getPlayer().coordinates()) {
 				if (!coordinateWinList.contains(playerCordiante)) {
 					continue;
 				}

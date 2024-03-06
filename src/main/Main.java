@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,8 +32,8 @@ public class Main {
 	}
 
 	private void session(Scanner sc) {
-		Player blue = new Player(Marking.PLAYER_A_MARKING);
-		Player red = new Player(Marking.PLAYER_X_MARKING);
+		Player blue = new Player(Marking.PLAYER_A_MARKING, new ArrayList<>());
+		Player red = new Player(Marking.PLAYER_X_MARKING, new ArrayList<>());
 		Board board = new Board();
 		board.printEmptyBoard(new LinkedList<>(List.of("A", "B", "C")));
 		for (Play play = new Play(blue, red, sc); !play.isExit();) {
