@@ -36,15 +36,14 @@ public class Main {
 		Board board = new Board();
 		board.printEmptyBoard(new LinkedList<>(List.of("A", "B", "C")));
 		for (Play play = new Play(blue, red, sc); !play.isExit();) {
-			Sign sign;
 			try {
-				sign = play.askPlayerSign();
+				Sign sign = play.askPlayerSign();
+				play.round(sign, board);
+				play.changePlayer();
 			} catch (ExitGameException e) {
 				Message.printExitInfo(e.getMessage());
-				break;
+				play.setExit(true);
 			}
-			play.round(sign, board);
-			play.changePlayer();
 		}
 	}
 

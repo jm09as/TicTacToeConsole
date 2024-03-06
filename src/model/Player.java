@@ -6,7 +6,7 @@ import java.util.List;
 public class Player {
 
 	private final Marking name;
-	private List<Coordinate> cordinates = new ArrayList<>();
+	private List<Coordinate> coordinates = new ArrayList<>();
 
 	public Player(Marking marking) {
 		this.name = marking;
@@ -16,12 +16,12 @@ public class Player {
 		return name;
 	}
 
-	public List<Coordinate> getCordinates() {
-		return cordinates;
+	public List<Coordinate> getCoordinates() {
+		return coordinates;
 	}
 
-	public void setCordinates(List<Coordinate> cordinates) {
-		this.cordinates = cordinates;
+	public void setCordinates(List<Coordinate> coordinates) {
+		this.coordinates = coordinates;
 	}
 
 }

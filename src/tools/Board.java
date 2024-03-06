@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import model.Sign;
 
@@ -59,11 +60,11 @@ public class Board {
 	}
 
 	private void takePlayerMarking(Sign sign, int key, String[] column) {
-		if (key != sign.getRow()) {
+		if (key != sign.column()) {
 			return;
 		}
 		for (int i = 0; i < column.length; i++) {
-			column[i] = sign.getColumn() == i ? String.valueOf(sign.getMarking().getMarking()) : column[i].equals(" ") ? " " : column[i];
+			column[i] = sign.row() == i ? String.valueOf(sign.marking().getMarking()) : column[i].equals(" ") ? " " : column[i];
 		}
 	}
 
@@ -117,11 +118,7 @@ public class Board {
 	}
 
 	private void printBoardMargin() {
-		LinkedList<String> margin = new LinkedList<>(List.of("     1     ", "     2     ", "     3     "));
-		for (int i = 0; i < 3; i++) {
-			System.out.print(String.format("     %s    ", margin.pollFirst()));
-		}
-		System.out.println();
+		System.out.println(List.of("          1         ", "          2         ", "          3         ").stream().collect(Collectors.joining()));
 	}
 
 }

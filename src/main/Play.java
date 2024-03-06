@@ -31,15 +31,10 @@ public class Play {
 	}
 
 	public Sign askPlayerSign() throws ExitGameException {
-		Sign sign = new Sign();
-		sign.setMarking(getPlayer().getName());
-		UserInput input = new UserInput(sc);
 		Message.printAskPlayer(getCurrentName());
-		Coordinate coordinate = getCoordinate(input);
-		sign.setColumn(coordinate.getColumn());
-		sign.setRow(coordinate.getRow());
-		getPlayer().getCordinates().add(coordinate);
-		return sign;
+		Coordinate coordinate = getCoordinate(new UserInput(sc));
+		getPlayer().getCoordinates().add(coordinate);
+		return new Sign(coordinate.getColumn(), coordinate.getRow(), getPlayer().getName());
 	}
 
 	private Coordinate getCoordinate(UserInput input) throws ExitGameException {
@@ -52,8 +47,8 @@ public class Play {
 	}
 
 	private boolean checkUsedCoordinate(Coordinate coordinate) {
-		List<Coordinate> allCoordiante = new ArrayList<>(redPlayer.getCordinates());
-		allCoordiante.addAll(bluePlayer.getCordinates());
+		List<Coordinate> allCoordiante = new ArrayList<>(redPlayer.getCoordinates());
+		allCoordiante.addAll(bluePlayer.getCoordinates());
 		return allCoordiante.contains(coordinate);
 	}
 
@@ -75,10 +70,10 @@ public class Play {
 
 	public boolean checkWin() {
 		int result = 3;
-		for (var cwinList : Coordinate.getWinList()) {
+		for (var coordinateWinList : Coordinate.getWinList()) {
 			int i = 0;
-			for (var playerCordiante : getPlayer().getCordinates()) {
-				if (!cwinList.contains(playerCordiante)) {
+			for (var playerCordiante : getPlayer().getCoordinates()) {
+				if (!coordinateWinList.contains(playerCordiante)) {
 					continue;
 				}
 				if (result == ++i) {
@@ -91,6 +86,10 @@ public class Play {
 
 	public boolean isExit() {
 		return exit;
+	}
+
+	public void setExit(boolean exit) {
+		this.exit = exit;
 	}
 
 }

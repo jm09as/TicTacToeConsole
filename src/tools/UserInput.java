@@ -13,14 +13,14 @@ public class UserInput {
 	}
 
 	public Coordinate askCoordinate() throws ExitGameException {
-		String cordiante = sc.nextLine();
-		cordiante = invertCoordinate(cordiante);
+		String coordiante = sc.nextLine();
+		coordiante = invertCoordinate(coordiante);
 		for (Coordinate c : Coordinate.values()) {
-			if (c.name().equalsIgnoreCase(cordiante)) {
+			if (c.name().equalsIgnoreCase(coordiante)) {
 				return c;
 			}
 		}
-		if (cordiante.equalsIgnoreCase("q")) {
+		if (coordiante.equalsIgnoreCase("q")) {
 			throw new ExitGameException("Kilptél a játékból!");
 		}
 		System.out.println("Nem megfelelő kordináta! Válassz másikat! :");
